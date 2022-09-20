@@ -1,28 +1,14 @@
 <script>
-import axios from 'axios';
+
 import { RouterLink, RouterView } from 'vue-router';
-export default {
-  name: "ListaDePokemons",
-  data() {
-    return { pokemons: [] };
-  },
-  async created() {
-    try {
-      let resposta = await axios.get('http://localhost:8080/api/v1/pokemons');
-      console.log(resposta);
-      this.pokemons = resposta.data
-    } catch (erro) {
-      console.log(erro);
-    }
-  }
-}
+
 </script>
 
 <template>
-  <div class="container intro">
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">PokeDigix</a>
+  <header>
+    <nav class="sticky-top navbar navbar-dark navbar-expand-lg bg-dark">
+      <div class="container-md">
+        <a class="navbar-brand" href="#">Pokedigix</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -42,9 +28,11 @@ export default {
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <RouterLink class="dropdown-item" to="/ataques/novo">Novo</RouterLink></li>
+                  <RouterLink class="dropdown-item" to="/ataques/novo">Novo</RouterLink>
+                </li>
                 <li>
-                  <RouterLink class="dropdown-item" to="/ataques/lista">Lista</RouterLink></li>
+                  <RouterLink class="dropdown-item" to="/ataques/lista">Lista</RouterLink>
+                </li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -54,9 +42,11 @@ export default {
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <RouterLink class="dropdown-item" to="/tipos/novo">Novo</RouterLink></li>
+                  <RouterLink class="dropdown-item" to="/tipos/novo">Novo</RouterLink>
+                </li>
                 <li>
-                  <RouterLink class="dropdown-item" to="/tipos/lista">Lista</RouterLink></li>
+                  <RouterLink class="dropdown-item" to="/tipos/lista">Lista</RouterLink>
+                </li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -66,29 +56,19 @@ export default {
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <RouterLink class="dropdown-item" to="/pokemons/novo">Novo</RouterLink></li>
+                  <RouterLink class="dropdown-item" to="/pokemons/novo">Novo</RouterLink>
+                </li>
                 <li>
-                  <RouterLink class="dropdown-item" to="/pokemons/lista">Lista</RouterLink></li>
+                  <RouterLink class="dropdown-item" to="/pokemons/lista">Lista</RouterLink>
+                </li>
               </ul>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div>
-      <h2>Lista de Pokemon</h2>
-      <ul>
-        <li v-for="pokemon in pokemons" :key="pokemon.id">
-          <img :src= "'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.numeroPokedex + '.png'" />
-          {{pokemon.numeroPokedex}} - {{pokemon.nome}}
-        </li>
-      </ul>
-    </div>
-  </div>
+  </header>
+  <main class="container intro">
+    <RouterView />
+  </main>
 </template>
-
-<style>
-.intro {
-  background-image: url("");
-}
-</style>
