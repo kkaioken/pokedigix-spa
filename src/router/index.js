@@ -3,6 +3,7 @@ import PokemonListaView from '../views/PokemonListaView.vue'
 import TipoNovoView from '../views/TipoNovoView.vue'
 import TipoListaView from '../views/TipoListaView.vue'
 import AtaqueNovoView from '../views/AtaqueNovoView.vue'
+import AtaqueListaView from '../views/AtaqueListaView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,8 +28,15 @@ const router = createRouter({
       path: '/ataques/novo',
       name: 'ataques-novo',
       component: AtaqueNovoView
-    },
-    {
+    },{
+      path: '/ataques/novo',
+      name: 'ataques-novo',
+      component: AtaqueNovoView
+    },{
+      path: '/ataques/lista',
+      name: 'ataques-lista',
+      component: AtaqueListaView
+    },{
       path: '/about',
       name: 'about',
       // route level code-splitting
