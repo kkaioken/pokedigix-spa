@@ -1,38 +1,28 @@
-import http from '../http-commons';
+import http from "../http-commons";
 
 class AtaqueDataService {
-    async buscarTodos(){
+    async buscarTodos() {
         let resposta = await http.get('/ataques');
         return resposta.data;
     }
 
-    async buscarPeloId(id){
-        let resposta = await http.get('/ataques/${id}');
+    async buscarPeloId(id) {
+        let resposta = await http.get('/ataques/' + id);
         return resposta.data;
     }
 
-    async buscarPeloNome(nome){
-        let resposta = await http.get('/ataques?termo=${nome}');
+    async criar(ataque) {
+        let resposta = await http.post('/ataques', ataque);
         return resposta.data;
     }
 
-    async buscarPeloIdDoTipo(id){
-        let resposta = await http.get('/ataques/tipo/${id}');
+    async atualizar(id, ataque) {
+        let resposta = await http.put('/ataques/' + id, ataque);
         return resposta.data;
     }
-
-    async criar(ataque){
-        let resposta = await http.post('/ataques', ataque)
-        return resposta.data;
-    }
-
-    async atualizar(id, ataque){
-        let resposta = await http.put('/ataques/${id}', ataque);
-        return resposta.data;
-    }
-
-    async remover(id){
-        await http.delete('/ataques/${id}');
+    
+    async remover(id) {
+        let resposta = await http.delete('/ataques/' + id);
     }
 
 }

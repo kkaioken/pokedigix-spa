@@ -4,7 +4,7 @@
 	import AtaqueResponse from '../models/AtaqueResponse';
 	import TipoDataService from '../services/TipoDataService';
 	export default {
-		name: 'ataques-novo',
+		name: 'ataques-edit',
 		data() {
 			return {
 				ataqueRequest: new AtaqueRequest(),
@@ -33,7 +33,7 @@
 		},
 		methods: {
 			salvar() {
-				AtaqueDataService.criar(this.ataqueRequest)
+				AtaqueDataService.atualizar(this.$route.params.id, this.ataqueRequest)
 					.then(resposta => {
 						this.ataqueResponse = resposta;
 						this.salvo = true;
@@ -43,18 +43,10 @@
 						this.salvo = false;
 					})
 			},
-			novo() {
-				this.ataqueRequest = new AtaqueRequest();
-				this.desabilitarForca = false;
-				this.ataqueRequest.categoria = this.categorias[1].nomeBanco;
-				this.ataqueResponse = new AtaqueResponse();
-				this.salvo = false;
-			},
 			carregarTipos() {
 				TipoDataService.buscarTodos()
 					.then(resposta => {
 						this.tipos = resposta;
-						this.ataqueRequest.tipoId = this.tipos[0].id;
 					})
 					.catch(erro => {
 						console.log(erro);
@@ -67,10 +59,23 @@
 					this.desabilitarForca = false;
 				}
 			},
+			carregarAtaque(id) {
+				AtaqueDataService.buscarPeloId(id)
+					.then(resposta => {
+						this.ataqueRequest = resposta;
+						this.ataqueRequest.tipoId = resposta.tipo.id;
+					})
+					.catch(erro => {
+						console.log(erro);
+					})
+			},
+			voltar() {
+				this.$router.push({name: 'ataques-lista'})
+			} 
 		},
 		mounted() {
 			this.carregarTipos();
-			this.novo();
+			this.carregarAtaque(this.$route.params.id);
 		},
 	}
 	</script>
@@ -133,7 +138,7 @@
 					</span>
 				</div>
 				<div class="row-sm">
-					<button @click="novo" class="btn btn-primary">Novo</button>
+					<button @click="voltar" class="btn btn-primary">Novo</button>
 				</div>
 			</div>
 		</div>
