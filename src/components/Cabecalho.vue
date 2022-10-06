@@ -63,6 +63,22 @@
 					</li>
 				  </ul>
 				</li>
+	
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+					aria-expanded="false">
+					Treinador
+				  </a>
+				  <ul class="dropdown-menu">
+					<li>
+					  <RouterLink class="dropdown-item" to="/treinadores/novo">Novo</RouterLink>
+					</li>
+					<li>
+					  <RouterLink class="dropdown-item" to="/treinadores/lista">Listar</RouterLink>
+					</li>
+				  </ul>
+				</li>
+	
 			  </ul>
 			  <form class="d-flex" role="search">
 				<input class="form-control me-1" type="search" placeholder="Pesquisar" aria-label="Search">
