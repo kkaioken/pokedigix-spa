@@ -22,6 +22,10 @@ class TreinadorDataService {
    async removerPorNome(nome) {
       await http.delete('/treinadores?termo='+ nome);
    }
+   async criar(treinador) {
+		let reposta = await http.post('/treinadores', treinador);
+		return reposta.data;
+	}
 
 }
 

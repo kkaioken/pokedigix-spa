@@ -1,14 +1,18 @@
 <script>
 	import TipoDataService from'../services/TipoDataService';
-	import Tipo from '../models/Tipo'
+	import Tipo from '../models/Tipo';
+	import MensagemSucessoVue from '../components/MensagemSucesso.vue';
 	export default{
 		name:'tipos-novo',
 		data(){
 			return{ 
 				tipo: new Tipo(),
 				salvo: false
-			}
+			};
 		},
+		components: {
+			MensagemSucessoVue
+	},
 		methods:{
 			salvar(){
 			  TipoDataService.criar(this.tipo)
@@ -49,11 +53,9 @@
 	</div>
 	
 	<div v-else>
-	  <h4>Salvo com sucesso!</h4>
-	  <span>Tipo id: {{tipo.id}}</span>
-	  <div class="row-sm">
-		<button @click="novo" class="btn btn-primary">Novo</button>
-	  </div>
+	 <MensagemSucessoVue @cadastro="novo" urlListagem="tipos-lista">
+		<span>O tipo {{tipo.nome}} foi cadastrado com sucesso!</span>
+	 </MensagemSucessoVue>
 	</div>
 	
 	</template>
