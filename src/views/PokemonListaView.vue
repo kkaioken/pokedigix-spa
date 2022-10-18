@@ -4,7 +4,7 @@ import Busca from '../components/Busca.vue';
 import ModalExclusao from '../components/ModalExclusao.vue';
 import Ordenacao from '../components/Ordenacao.vue';
 import Paginacao from '../components/Paginacao.vue';
-import PokemonResponse from '../models/PokemonResponse';
+import PokemonResponse from '../models/PokemonResponse.js';
 import PokemonDataService from '../services/PokemonDataService';
 export default {
   name: "pokemons-lista",

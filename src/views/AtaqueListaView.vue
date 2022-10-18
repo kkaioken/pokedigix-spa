@@ -2,8 +2,8 @@
 import AtaqueDataService from '../services/AtaqueDataService';
 import ModalExclusao from '../components/ModalExclusao.vue';
 import Paginacao from '../components/Paginacao.vue';
-import Ordenacao from '../components/Ordenacao.vue';
 import Busca from '../components/Busca.vue';
+import Ordenacao from '../components/Ordenacao.vue';
 import Loading from "vue-loading-overlay";
 
 export default {
